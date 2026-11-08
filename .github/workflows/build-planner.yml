@@ -1,0 +1,53 @@
+name: Build Planner PDFs
+
+# Manually rebuild the printable 2027 planner via the "Run workflow" button
+# in the GitHub Actions tab.
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          google-chrome --version
+
+      - name: Generate planner PDFs
+        run: |
+          # Prefer google-chrome-stable (apt package), fall back to chromium if present.
+          for c in /usr/bin/google-chrome-stable /usr/bin/google-chrome /usr/bin/chromium; do
+            if [ -x "$c" ]; then export CHROME="$c"; break; fi
+          done
+          echo "Using CHROME=$CHROME"
+          python generate.py
+
+      - name: Verify output
+        run: |
+          ls -lh output/*.pdf
+          test -f output/planner-2027-A5.pdf
+          test -f output/planner-2027-A6.pdf
+          test -f output/planner-2027-A4-booklet.pdf
+          test -f output/planner-2027-A5-booklet.pdf
+
+      - name: Upload planner PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: planner-2027-pdfs
+          path: output/*.pdf
+          if-no-files-found: error
