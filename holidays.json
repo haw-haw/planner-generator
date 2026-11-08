@@ -1,0 +1,13 @@
+{
+  "_comment": "off = days off (shown in red with a 休 badge), work = make-up working days (shown with a 班 badge). Defaults list only the statutory holidays; update after the State Council publishes the 2027 schedule, then re-run generate.py.",
+  "off": [
+    "2027-01-01",
+    "2027-02-05", "2027-02-06", "2027-02-07", "2027-02-08",
+    "2027-04-05",
+    "2027-05-01", "2027-05-02",
+    "2027-06-09",
+    "2027-09-15",
+    "2027-10-01", "2027-10-02", "2027-10-03"
+  ],
+  "work": []
+}

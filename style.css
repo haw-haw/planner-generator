@@ -1,0 +1,123 @@
+/* All sizes in mm; content area is 128 x 192 mm inside each A5 page. */
+@page { size: 148mm 210mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  color: #222; font-size: 8pt;
+  --accent: #c0392b; --line: #c4c4c4; --grid: #8a8a8a; --muted: #999; --shade: #f2f2f2;
+}
+.num { font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+
+.page {
+  width: 148mm; height: 210mm; overflow: hidden; position: relative;
+  padding: 10mm 8mm 8mm 12mm; /* right-hand page: gutter on the left */
+  break-after: page;
+}
+.page.left { padding: 10mm 12mm 8mm 8mm; }
+.page:last-child { break-after: auto; }
+
+/* ---------- shared ---------- */
+.hdr {
+  height: 16mm; display: flex; align-items: flex-end; justify-content: space-between;
+  border-bottom: 0.4mm solid #222; padding-bottom: 1.5mm;
+}
+.hdr .ttl { display: flex; align-items: baseline; gap: 1.5mm; }
+.hdr .big { font-size: 24pt; font-weight: 600; line-height: 1; }
+.hdr .cn { font-size: 12pt; font-weight: 600; }
+.hdr .en { font-size: 7pt; letter-spacing: 0.6mm; color: var(--muted); margin-left: 1mm; }
+.hdr .hr { font-size: 9pt; color: #555; letter-spacing: 0.3mm; }
+
+.line { height: 6mm; border-bottom: 0.2mm solid var(--line); position: relative; }
+.check i {
+  position: absolute; left: 0.5mm; bottom: 1.2mm; width: 3mm; height: 3mm;
+  border: 0.25mm solid var(--grid); border-radius: 0.5mm;
+}
+.sec { margin-top: 3mm; }
+.st {
+  height: 7mm; line-height: 7mm; font-size: 8.5pt; font-weight: 600;
+  border-left: 0.8mm solid var(--accent); padding-left: 2mm;
+}
+.cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+
+.we { color: #666; }
+.off, .off .dn { color: var(--accent); }
+.badge {
+  display: inline-block; font-size: 5pt; line-height: 1; padding: 0.4mm 0.5mm;
+  border-radius: 0.5mm; margin-left: 0.8mm; vertical-align: 1.2mm;
+  font-family: "PingFang SC", sans-serif; font-weight: 400;
+}
+.badge.off { background: var(--accent); color: #fff; }
+.badge.work { background: #555; color: #fff; }
+.lu { font-size: 5.5pt; color: var(--muted); white-space: nowrap; }
+.lu.fest { color: var(--accent); }
+.lu.term { color: #2f6f8f; }
+
+/* ---------- cover ---------- */
+.cover { height: 150mm; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.cv-year { font-size: 64pt; font-weight: 600; letter-spacing: 2mm; line-height: 1; }
+.cv-sub { margin-top: 5mm; font-size: 11pt; letter-spacing: 3mm; color: #555; }
+.cv-cn { margin-top: 3mm; font-size: 10pt; letter-spacing: 2mm; color: var(--accent); }
+.cv-name { margin: 20mm auto 0; width: 80mm; display: flex; align-items: flex-end; gap: 2mm; font-size: 7pt; letter-spacing: 0.5mm; color: var(--muted); }
+.cv-name .line { flex: 1; }
+.back { position: absolute; bottom: 14mm; left: 0; right: 0; text-align: center; font-size: 7pt; letter-spacing: 1mm; color: var(--muted); }
+
+/* ---------- about me ---------- */
+.fields { margin-top: 4mm; }
+.field { height: 8mm; display: flex; align-items: flex-end; gap: 3mm; }
+.field span { width: 16mm; font-size: 8pt; color: #555; padding-bottom: 0.8mm; }
+.field div { flex: 1; height: 100%; border-bottom: 0.2mm solid var(--line); }
+.lost { margin-top: 3mm; font-size: 6.5pt; color: var(--muted); }
+.goal span { position: absolute; left: 0.5mm; bottom: 1mm; font-size: 7pt; color: var(--muted); }
+.kw { height: 26mm; border: 0.25mm solid var(--line); border-radius: 1mm; margin-top: 1mm; }
+
+/* ---------- year overview ---------- */
+.year { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 40mm); column-gap: 5mm; margin-top: 4mm; }
+.mini .mt { height: 6mm; font-size: 7.5pt; font-weight: 600; }
+.mini .mt b { font-size: 11pt; margin-right: 0.5mm; }
+.mini .mt span { font-size: 6pt; color: var(--muted); font-weight: 400; margin-left: 1.5mm; letter-spacing: 0.3mm; }
+.mini table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.mini th { font-size: 5.5pt; font-weight: 400; color: var(--muted); height: 4mm; font-family: "PingFang SC", sans-serif; }
+.mini td { font-size: 6.5pt; text-align: center; height: 4.6mm; }
+.mini td.off { font-weight: 700; }
+.legend { margin-top: 2mm; font-size: 6pt; color: var(--muted); }
+
+/* ---------- month grid (left page of spread) ---------- */
+.mgrid { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 2mm; }
+.mgrid col.wkcol { width: 7mm; }
+.mgrid th { height: 6mm; font-size: 7pt; font-weight: 600; text-align: left; padding-left: 1mm; }
+.mgrid th.we { color: #666; }
+.mgrid td { border: 0.2mm solid var(--grid); vertical-align: top; padding: 0.8mm 1mm; }
+.mgrid td.wk { border: none; font-size: 5pt; color: var(--muted); padding: 1.2mm 0 0 0; }
+.mgrid .dn { font-size: 10pt; font-weight: 600; line-height: 1.1; }
+.mgrid td.we .dn { color: #666; }
+.mgrid td.off .dn { color: var(--accent); }
+.mgrid td.out { background: var(--shade); }
+.mgrid td.out .dn { color: #ccc; font-weight: 400; }
+
+/* ---------- habit tracker ---------- */
+.habit { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 1mm; }
+.habit th, .habit td { border: 0.2mm solid var(--line); height: 5mm; }
+.habit th { height: 4.5mm; font-size: 4.5pt; font-weight: 400; color: #555; }
+.habit th.hn { width: 16mm; font-size: 6pt; font-family: "PingFang SC", sans-serif; }
+.habit .we { background: var(--shade); }
+
+/* ---------- weekly page ---------- */
+.week {
+  margin-top: 3mm; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 43.25mm);
+  grid-auto-flow: column; border-top: 0.25mm solid var(--grid); border-left: 0.25mm solid var(--grid);
+}
+.day { border-right: 0.25mm solid var(--grid); border-bottom: 0.25mm solid var(--grid); padding: 0 2mm; overflow: hidden; }
+.dh { height: 7mm; display: flex; align-items: center; gap: 1.5mm; }
+.dh .dn { font-size: 13pt; font-weight: 600; }
+.dh .wd { font-size: 7.5pt; font-weight: 600; }
+.dh .lu { margin-left: auto; font-size: 6pt; }
+.dh .badge { margin-left: 0; vertical-align: 0; }
+.day.we .dn, .day.we .wd { color: #666; }
+.day.off .dn, .day.off .wd { color: var(--accent); }
+.day .line { height: 6mm; border-bottom-style: dotted; }
+.day.todo { background: #fafafa; }
+.day.todo .line { border-bottom-style: solid; }
+
+/* ---------- notes ---------- */
+.dots { display: block; margin-top: 3mm; fill: #9a9a9a; }

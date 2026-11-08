@@ -1,0 +1,69 @@
+/* A6 overrides on top of style.css; content area is 90 x 135 mm. */
+@page { size: 105mm 148mm; margin: 0; }
+body { font-size: 7pt; }
+
+.page { width: 105mm; height: 148mm; padding: 7mm 6mm 6mm 9mm; }
+.page.left { padding: 7mm 9mm 6mm 6mm; }
+
+/* ---------- shared ---------- */
+.hdr { height: 11mm; padding-bottom: 1mm; border-bottom-width: 0.3mm; }
+.hdr .ttl { gap: 1mm; }
+.hdr .big { font-size: 16pt; }
+.hdr .cn { font-size: 9pt; }
+.hdr .en { font-size: 5pt; letter-spacing: 0.4mm; }
+.hdr .hr { font-size: 7pt; }
+
+.line { height: 5mm; }
+.check i { width: 2.5mm; height: 2.5mm; bottom: 1mm; }
+.sec { margin-top: 2mm; }
+.st { height: 5.5mm; line-height: 5.5mm; font-size: 7.5pt; border-left-width: 0.7mm; padding-left: 1.5mm; }
+.cols { column-gap: 4mm; }
+.badge { font-size: 4pt; padding: 0.3mm 0.4mm; margin-left: 0.6mm; vertical-align: 1mm; }
+.lu { font-size: 4.5pt; }
+
+/* ---------- cover ---------- */
+.cover { height: 105mm; }
+.cv-year { font-size: 44pt; letter-spacing: 1.5mm; }
+.cv-sub { margin-top: 3.5mm; font-size: 8pt; letter-spacing: 2mm; }
+.cv-cn { margin-top: 2mm; font-size: 7.5pt; letter-spacing: 1.5mm; }
+.cv-name { margin-top: 12mm; width: 60mm; font-size: 5.5pt; }
+.back { bottom: 10mm; font-size: 5.5pt; }
+
+/* ---------- about me ---------- */
+.fields { margin-top: 3mm; }
+.field { height: 6mm; gap: 2mm; }
+.field span { width: 13mm; font-size: 7pt; }
+.lost { margin-top: 2mm; font-size: 5.5pt; }
+.goal span { font-size: 6pt; }
+.kw { height: 16mm; }
+
+/* ---------- year overview ---------- */
+.year { grid-template-rows: repeat(4, 29mm); column-gap: 3mm; margin-top: 3mm; }
+.mini .mt { height: 4.5mm; font-size: 6pt; }
+.mini .mt b { font-size: 8pt; }
+.mini .mt span { font-size: 4.5pt; margin-left: 1mm; }
+.mini th { font-size: 4pt; height: 3mm; }
+.mini td { font-size: 5pt; height: 3.4mm; }
+.legend { margin-top: 1mm; font-size: 5pt; }
+
+/* ---------- month grid ---------- */
+.mgrid { margin-top: 1.5mm; }
+.mgrid col.wkcol { width: 5mm; }
+.mgrid th { height: 5mm; font-size: 6pt; padding-left: 0.7mm; }
+.mgrid td { padding: 0.5mm 0.7mm; }
+.mgrid td.wk { font-size: 3.8pt; padding-top: 0.8mm; }
+.mgrid .dn { font-size: 8pt; }
+
+/* ---------- habit tracker ---------- */
+.habit th, .habit td { height: 4mm; }
+.habit th { height: 3.5mm; font-size: 3.4pt; }
+.habit th.hn { width: 10mm; font-size: 5pt; }
+
+/* ---------- weekly page ---------- */
+.week { margin-top: 2mm; }
+.day { padding: 0 1.5mm; }
+.dh { height: 5.5mm; gap: 1mm; }
+.dh .dn { font-size: 10pt; }
+.dh .wd { font-size: 6.5pt; }
+.dh .lu { font-size: 5pt; }
+.day .line { height: 5mm; }
