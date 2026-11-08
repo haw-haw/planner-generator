@@ -10,20 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Install Google Chrome
+      - name: Install Google Chrome and CJK fonts
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget
+          sudo apt-get install -y wget fonts-noto-cjk
           wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
           google-chrome --version
@@ -46,7 +46,7 @@ jobs:
           test -f output/planner-2027-A5-booklet.pdf
 
       - name: Upload planner PDFs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: planner-2027-pdfs
           path: output/*.pdf

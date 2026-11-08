@@ -45,7 +45,7 @@ body {
 .badge {
   display: inline-block; font-size: 5pt; line-height: 1; padding: 0.4mm 0.5mm;
   border-radius: 0.5mm; margin-left: 0.8mm; vertical-align: 1.2mm;
-  font-family: "PingFang SC", sans-serif; font-weight: 400;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; font-weight: 400;
 }
 .badge.off { background: var(--accent); color: #fff; }
 .badge.work { background: #555; color: #fff; }
@@ -77,7 +77,7 @@ body {
 .mini .mt b { font-size: 11pt; margin-right: 0.5mm; }
 .mini .mt span { font-size: 6pt; color: var(--muted); font-weight: 400; margin-left: 1.5mm; letter-spacing: 0.3mm; }
 .mini table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.mini th { font-size: 5.5pt; font-weight: 400; color: var(--muted); height: 4mm; font-family: "PingFang SC", sans-serif; }
+.mini th { font-size: 5.5pt; font-weight: 400; color: var(--muted); height: 4mm; font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
 .mini td { font-size: 6.5pt; text-align: center; height: 4.6mm; }
 .mini td.off { font-weight: 700; }
 .legend { margin-top: 2mm; font-size: 6pt; color: var(--muted); }
@@ -99,7 +99,7 @@ body {
 .habit { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 1mm; }
 .habit th, .habit td { border: 0.2mm solid var(--line); height: 5mm; }
 .habit th { height: 4.5mm; font-size: 4.5pt; font-weight: 400; color: #555; }
-.habit th.hn { width: 16mm; font-size: 6pt; font-family: "PingFang SC", sans-serif; }
+.habit th.hn { width: 16mm; font-size: 6pt; font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
 .habit .we { background: var(--shade); }
 
 /* ---------- weekly page ---------- */
