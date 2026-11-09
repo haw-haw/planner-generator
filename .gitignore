@@ -2,3 +2,7 @@
 build/
 __pycache__/
 .DS_Store
+
+# Generated planner PDFs are published as GitHub Releases, not tracked here.
+output/*.pdf
+output/*.html

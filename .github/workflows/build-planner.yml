@@ -1,9 +1,16 @@
 name: Build Planner PDFs
 
-# Manually rebuild the printable 2027 planner via the "Run workflow" button
-# in the GitHub Actions tab.
+# Manually build the planner and publish the generated PDFs as a GitHub Release.
 on:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release/tag name (e.g. v2027.1). Leave default to reuse the latest tag.'
+        required: false
+        default: 'v2027.1'
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -45,7 +52,23 @@ jobs:
           test -f output/planner-2027-A4-booklet.pdf
           test -f output/planner-2027-A5-booklet.pdf
 
-      - name: Upload planner PDFs
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            # Release/tag already exists: just refresh its assets.
+            gh release upload "$TAG" output/*.pdf --clobber
+          else
+            gh release create "$TAG" output/*.pdf \
+              --title "$TAG" \
+              --notes "2027 printable planner PDFs (A5 / A6, saddle-stitch & folded)."
+          fi
+          gh release view "$TAG" --json name,assets --jq '{name, assets: [.assets[].name]}'
+
+      - name: Upload planner PDFs (build artifact)
         uses: actions/upload-artifact@v7
         with:
           name: planner-2027-pdfs
